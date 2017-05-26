@@ -1,0 +1,16 @@
+<!--logs.wxml-->
+<view class="container">
+    <view class="content">
+        <view class="title">{{object.name}}</view>
+        <view class="desc">{{object.desc}}</view>
+        <view class="line"></view>
+        <view class="title">语法</view>
+        <text class="syntax">{{object.syntax}}</text>
+        <view class="line"></view>
+        <view class="title">参数</view>
+        <text class="parameter">{{object.parameter}}</text>
+        <view class="line"></view>
+        <view class="title">返回值</view>
+        <text class="returns">{{object.returns}}</text>
+    </view>
+</view>

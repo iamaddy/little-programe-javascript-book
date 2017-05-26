@@ -1,0 +1,76 @@
+<view class="lbs-list lbs-list_self">
+    <view class="lbs-list__map-box">
+        <image bindtap="bindqrCodeTap" src="../img/qr.png" class="lbs-list__qr-code" />
+        <view style="background-image: url(http://sjbz.mangowed.com/fengjingImage/1-120101162311.jpg);" class="lbs-list__map-bg"></view>
+        <view class="lbs-list__map-location-box">
+            <view class="lbs-list__map-text-box">
+                <view class="">
+                    <view class="lbs-list__map-bang-name">距离</view>
+                    <view class="lbs-list__map-bang-desc">{{title|| '你的生日'}}</view>
+                    
+                    <view class="lbs-list__map-bang-rank">
+                    480
+                    </view>
+                    <view class="lbs-list__map-bang-rank-number">
+                    2016-02-11
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    
+    <scroll-view lower-threshold="340" scroll-top="0" class="lbs-list__body" scroll-y="true" bindscrolltolower="loadMore" style="height: {{scrollHeight}}px;z-index: 199;">
+    <!--操作 lbs-list__body 进行 scroll 来遮挡顶部地图-->
+        <!--todo 这个层会有一个半透明毛玻璃, 样式待添加-->
+        <view style="display: none;" wx:if="{{on_rank}}" class="lbs-list__banner-box">
+            <image style="display:none;" bindtap="bindqrCodeTap" src="../img/qr.png" class="lbs-list__qr-code" />
+            <image style="display:none;" src="../img/setting.png" class="lbs-list__map-setting" />
+            <view class="lbs-list__banner">
+                <image class="lbs-list__avatar" src="{{userInfo.avatarUrl || 'https://mmocgame.qpic.cn/wechatgame/mEMdfrX5RU3YnFFdslRaeMLfdlRDm8oNYgLUWEPObWdgQcnxgA0vuXX58XknIUo7/0' }}"/>
+                <view class="lbs-list__name lbs-list__name_arrow">
+                    <view class="lbs-list__name-text">{{userInfo.nickName}}</view>
+                    <image style="display:none;" src="../img/jiantou.png" class="lbs-list__icon-jiantou" />
+                </view>
+                <view class="lbs-list__title">
+                    <image style="display:none;" src="../img/location.png" class="lbs-list__icon-title-location" />
+                    <view class="lbs-list__title-text">{{rankTitle}}</view>
+                </view>
+                <view bindtap="bindSelectHeroRankTap" style="{{hideHeroSelectRank ? 'display:none;' : ''}}"  class="lbs-list__desc lbs-list__desc_link">
+                    <view class="lbs-list__desc-text">第{{my_rank_info.hero_ranking}}{{my_rank_info.hero_name}} {{my_rank_info.score}}战力</view>
+                    <image src="../img/arrow-right.png" class="lbs-list__desc-link_arrow" />
+                </view>
+                <!--如果需要箭头,添加态 lbs-list__link_arrow-->
+            </view>
+        </view>
+
+        <view wx:else style="display:none;"  class="lbs-list__banner-box">
+            <view class="lbs-list__padding-banner">
+                <view class="lbs-list__padding-title">{{rank_location_name}}排行榜</view>
+                <view class="lbs-list__padding-desc">{{total_count ? '共' + total_count + '人上榜' : '无人上榜'}}</view>
+                <view style="{{total_count ? '' : 'display:none;'}}" class="lbs-list__padding-rank">{{my_rank_info.ranking > 1000 ?  '未进入前1000名' : '可排至第'+my_rank_info.ranking+'名'}}</view>
+            </view>
+        </view>
+
+        <view style="min-height: 0px;padding-bottom:0px;" class="lbs-list__banner-box  lbs-list__banner-box_self">
+            <view style="min-height: {{minHeight}}px" class="lbs-list__content {{hideNoData ? '' : 'lbs-list__content-empty'}}">
+                
+                <!-- <view  class="lbs-list__item "> -->
+                    
+                <view wx:for="{{commonDataList}}" class="lbs-list__item {{shareid === item.user.user_id ? 'lbs-list__item_current' : ''}}">
+                    <!--名次是3位数,使用态.lbs-list__item-count_3-->
+                    <view class="lbs-list__item-count lbs-list__item-count_list-{{index + 1}} {{item.item_count_class}}" >{{index + 1}}</view>
+                    <view data-open_id="{{item.user.openid || ''}}" data-user_id="{{item.user.user_id}}" url="../profile/profile?user_id={{item.user.user_id}}" catchtap="goProfile" url="../profile/profile?user_id={{item.user.user_id}}">
+                        <image class="lbs-list__item-avatar" src="{{(item.user.head_img_url || 'https://mmocgame.qpic.cn/wechatgame/mEMdfrX5RU3YnFFdslRaeMLfdlRDm8oNYgLUWEPObWdgQcnxgA0vuXX58XknIUo7') + '/0'}}"/>
+                        <view class="lbs-list__item-name">
+                            <view class="lbs-list__item-name-text">{{item.user.nick_name}}<image wx:if="{{shareid === item.user.user_id}}" src="../img/profile.png" class="lbs-list__item-name-icon" /></view>
+                        </view>
+                    </view>
+                    <view class="lbs-list__item-rank">{{item.hero_score.score}}战力</view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+
+

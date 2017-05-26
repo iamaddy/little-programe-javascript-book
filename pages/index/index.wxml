@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="section">
+        <input style="width:{{windowWidth - 100}}px" class="search-input" type="text" placeholder="搜对象/方法/属性" confirm-type="search"/>
+        <view class="search-btn" type="default">搜索</view>
+    </view>
+<view class="container">
+    
+    <view class="big-list" wx:for="{{list}}">
+        <view class="title">{{item.type}}</view>
+        <view class="item-list-content">
+            <view data-parentid="{{item.parentid}}" data-categeryid="{{it.categeryid}}" bindtap="showObjectDetail" wx:for="{{item.data}}" class="item-list" wx:for-item="it">
+                <view class="item">{{it.name}}</view>
+                <image src="../img/right-arrow.png" class="list__desc-link_arrow" />
+            </view>
+        </view>
+    </view>
+</view>

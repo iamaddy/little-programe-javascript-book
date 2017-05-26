@@ -1,0 +1,35 @@
+<!--logs.wxml-->
+<view class="container">
+    <view class="content">
+        <view class="title">{{object.title}}</view>
+        <view class="desc">{{object.desc}}</view>
+        <view class="line"></view>
+        <view class="title">语法</view>
+        <text style="width:{{syntaxWidth}}px;"  class="syntax">{{object.syntax}}</text>
+        <view class="line"></view>
+        <view class="title">参数</view>
+        <text class="parameter">{{object.parameter}}</text>
+        <view class="line"></view>
+        <view class="title">返回值</view>
+        <text class="returns">{{object.returns}}</text>
+
+        <view class="line"></view>
+        <view class="title">属性</view>
+        <view class="property-list">
+            <view bindtap="showProperty" class="property-item" wx:for="{{object.property}}">
+                <view class="name">{{item.name}}</view>
+                <view class="desc-text">{{item.desc}}</view>
+                <image src="../img/right-arrow.png" class="list__desc-link_arrow" />
+            </view>
+        </view>
+        
+        <view class="title">方法</view>
+        <view class="method-list">
+            <view bindtap="showMethod" data-name="{{item.name}}" class="method-item" wx:for="{{object.methods}}">
+                <view class="name">{{item.name}}</view>
+                <view class="desc-text">{{item.desc}}</view>
+                <image src="../img/right-arrow.png" class="list__desc-link_arrow" />
+            </view>
+        </view>
+    </view>
+</view>

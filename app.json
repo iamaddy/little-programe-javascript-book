@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/day/day",
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/method/method"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#f7f7f7",
+    "navigationBarTitleText": "JavaScript手册",
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#f7f7f7"
+  }
+}

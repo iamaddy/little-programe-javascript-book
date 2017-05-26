@@ -1,0 +1,75 @@
+.content{
+    padding: 10px;
+    font-size: 14px;
+}
+.title{
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+.desc{
+    margin: 12px 0 0 0;
+    line-height: 150%;
+    font-size: 14px;
+}
+.syntax{
+    margin: 10px 0;
+    padding: 10px;
+    border: 0;
+    border: 1px dotted #785;
+    background: #f5f5f5;
+    display: inline-block;
+    font-size: 12px;
+    width: auto;
+}
+.parameter{
+
+}
+.returns{
+
+}
+.line{
+    border-bottom: 1px solid #ccc;
+    margin: 10px 0;
+}
+.method-item, .property-item{
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    line-height: 50px;
+    position: relative;
+}
+.method-item .name, .property-item .name{
+    margin-left: 10px;
+}
+.method-item .desc-text, .property-item .desc-text{
+    line-height: 50px;
+    color: #9b9b9b;
+    text-align: right;
+    font-size: 12px;
+    font-size: 24rpx;
+    position: absolute;
+    top: 0;
+    margin-right: 25px;
+    right: 0;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap!important;
+}
+.list__desc-link_arrow{
+    content:"";
+    width:8px;
+    height:14px;
+    display:block;
+    position:absolute;
+    right:10px;
+    top:18px;
+}
+.method-item:last-child {
+   border-bottom: none
+}
+.method-item:last-child {
+   border-bottom: none
+}
