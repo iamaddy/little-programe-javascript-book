@@ -1,12 +1,12 @@
 <view class="lbs-list lbs-list_self">
     <view class="lbs-list__map-box">
-        <image bindtap="bindqrCodeTap" src="../img/qr.png" class="lbs-list__qr-code" />
+        <image bindtap="bindqrCodeTap" src="../img/add-white.png" class="lbs-list__qr-code" />
         <view style="background-image: url(http://sjbz.mangowed.com/fengjingImage/1-120101162311.jpg);" class="lbs-list__map-bg"></view>
         <view class="lbs-list__map-location-box">
             <view class="lbs-list__map-text-box">
                 <view class="">
                     <view class="lbs-list__map-bang-name">距离</view>
-                    <view class="lbs-list__map-bang-desc">{{title|| '你的生日'}}</view>
+                    <view class="lbs-list__map-bang-desc">{{title|| '你的纪念日'}}</view>
                     
                     <view class="lbs-list__map-bang-rank">
                     480
@@ -53,20 +53,18 @@
         </view>
 
         <view style="min-height: 0px;padding-bottom:0px;" class="lbs-list__banner-box  lbs-list__banner-box_self">
-            <view style="min-height: {{minHeight}}px" class="lbs-list__content {{hideNoData ? '' : 'lbs-list__content-empty'}}">
-                
-                <!-- <view  class="lbs-list__item "> -->
-                    
-                <view wx:for="{{commonDataList}}" class="lbs-list__item {{shareid === item.user.user_id ? 'lbs-list__item_current' : ''}}">
-                    <!--名次是3位数,使用态.lbs-list__item-count_3-->
-                    <view class="lbs-list__item-count lbs-list__item-count_list-{{index + 1}} {{item.item_count_class}}" >{{index + 1}}</view>
+            <view style="min-height: {{minHeight}}px" class="lbs-list__content">
+                <view wx:for="{{commonDataList}}" class="lbs-list__item">
                     <view data-open_id="{{item.user.openid || ''}}" data-user_id="{{item.user.user_id}}" url="../profile/profile?user_id={{item.user.user_id}}" catchtap="goProfile" url="../profile/profile?user_id={{item.user.user_id}}">
-                        <image class="lbs-list__item-avatar" src="{{(item.user.head_img_url || 'https://mmocgame.qpic.cn/wechatgame/mEMdfrX5RU3YnFFdslRaeMLfdlRDm8oNYgLUWEPObWdgQcnxgA0vuXX58XknIUo7') + '/0'}}"/>
+                        <image class="lbs-list__item-avatar" src="{{(item.user.head_img_url || 'https://mmocgame.qpic.cn/wechatgame/mEMdfrX5RU3YnFFdslRaeMLfdlRDm8oNYgLUWEPObWdgQcnxgA0vuXX58XknIUo7')}}"/>
                         <view class="lbs-list__item-name">
-                            <view class="lbs-list__item-name-text">{{item.user.nick_name}}<image wx:if="{{shareid === item.user.user_id}}" src="../img/profile.png" class="lbs-list__item-name-icon" /></view>
+                            <view class="lbs-list__item-name-text">{{item.user.nick_name}}
+                            </view>
+                            <view class="list__item-date-desc">{{item.date || '2017-04-20'}}
+                                </view>
                         </view>
                     </view>
-                    <view class="lbs-list__item-rank">{{item.hero_score.score}}战力</view>
+                    <view class="lbs-list__item-rank"><text class="last_date">{{item.hero_score.score}}</text>天</view>
                 </view>
             </view>
         </view>
