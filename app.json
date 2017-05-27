@@ -1,6 +1,9 @@
 {
   "pages":[
+  
+    "pages/add/add",
     "pages/day/day",
+    "pages/tag/tag",
     "pages/index/index",
     "pages/detail/detail",
     "pages/method/method"

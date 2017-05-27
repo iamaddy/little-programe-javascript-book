@@ -1,6 +1,6 @@
 <view class="lbs-list lbs-list_self">
     <view class="lbs-list__map-box">
-        <image bindtap="bindqrCodeTap" src="../img/add-white.png" class="lbs-list__qr-code" />
+        <image style="z-index:9999999" bindtap="bindAddDayTap" src="../img/add-white.png" class="lbs-list__qr-code" />
         <view style="background-image: url(http://sjbz.mangowed.com/fengjingImage/1-120101162311.jpg);" class="lbs-list__map-bg"></view>
         <view class="lbs-list__map-location-box">
             <view class="lbs-list__map-text-box">

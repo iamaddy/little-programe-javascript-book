@@ -68,6 +68,11 @@ Page({
     },
     onLoad: function(res) {
         
+    },
+    bindAddDayTap: function () {
+        wx.navigateTo({
+            url: '../add/add'
+        })
     }
 });
 

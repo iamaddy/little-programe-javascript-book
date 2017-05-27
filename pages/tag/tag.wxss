@@ -1,0 +1,58 @@
+.list{
+    font-size: 28rpx;
+    background-color: #eee;
+}
+.section{
+    height: 40px;
+    background-color: #fff;
+    border-bottom: 1px #eee solid;
+    line-height: 40px;
+}
+.lable_txt{
+    display: inline-block;
+    margin-left: 10px;
+    float: left;
+}
+.right_element{
+    float: right;
+    margin-right: 10px;
+    width: 250px;
+    text-align:right;
+}
+.gap{
+    margin-top: 20px;
+}
+.title_input{
+    margin-top: 5.5px;
+}
+.event-type_parent{
+    font-size: 14px;
+}
+.event-type_child{
+    text-align: center;
+    line-height: 30px;
+}
+
+.event-type_icon {
+    width:24px;
+    height:24px;
+    margin-top: 3px;
+}
+.event-type_txt{
+    display: inline-block;
+    margin-top: 3px;
+}
+
+.right{
+    width:15px;
+    height:15px;
+    margin-top:15px;
+}
+
+.tag_icon{
+    width:25px;
+    height:25px;
+    margin-top:7.5px;
+    margin-left:15px;
+    float: left;
+}
