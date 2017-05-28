@@ -1,5 +1,5 @@
 <view class="list">
-    <view wx:for="{{tagData}}" bindtap="selectTag" class="section" data-id="{{item.tag_id}}">
+    <view wx:for="{{tagData}}" bindtap="selectTag" class="section {{index === 0 ? 'gap' : ''}}" data-id="{{item.tag_id}}">
         <image class="tag_icon" src="../img/{{item.icon}}"/>
         <label class="lable_txt">{{item.tag_name}}</label>
         <image style="{{selectIndex === index ? '' : 'display:none;'}}" src="../img/right.png" class="right_element right" />

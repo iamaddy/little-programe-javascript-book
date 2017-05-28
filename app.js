@@ -1,3 +1,5 @@
+
+
 //app.js
 App({
     onLaunch: function() {
@@ -26,5 +28,6 @@ App({
     },
     globalData: {
         userInfo: null
-    }
+    },
+    PubSub: require('./utils/pubsub')
 })

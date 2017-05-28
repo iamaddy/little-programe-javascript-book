@@ -22,7 +22,7 @@
     margin-top: 20px;
 }
 .title_input{
-    margin-top: 5.5px;
+    margin-top: 9px;
 }
 .event-type_parent{
     font-size: 14px;
@@ -46,4 +46,67 @@
     width:10px;
     height:10px;
     margin-top:15px;
+}
+
+.lbs-list__footer-box {
+    overflow:hidden
+}
+.lbs-list__footer {
+    padding:10px 0;
+    position:fixed;
+    bottom:0;
+    z-index:299;
+    width:100%;
+    background-color:#fff
+}
+@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-device-pixel-ratio:2) {
+    .lbs-list__footer {
+    border:none;
+    background-image:-webkit-linear-gradient(270deg,#e6e6e6,#e6e6e6 50%,transparent 0),-webkit-linear-gradient(180deg,transparent,transparent 50%,transparent 0),-webkit-linear-gradient(90deg,transparent,transparent 50%,transparent 0),-webkit-linear-gradient(0,transparent,transparent 50%,transparent 0);
+    background-size:100% 1px,1px 100%,100% 1px,1px 100%;
+    background-repeat:no-repeat;
+    background-position:top,100% 0,bottom,0 0
+}
+}.lbs-list__btn {
+    border:1px solid #1aae18;
+    border-radius:4px;
+    background-clip:padding-box;
+    height:43px;
+    line-height:43px;
+    text-align:center;
+    padding:0 10px;
+    color:#fff;
+    margin:0 13px;
+    font-size:18px;
+    background-color:#1aae18
+}
+.lbs-list__btn_light {
+    background-color:#fff;
+    color:#1aae18
+}
+.lbs-list__btn_disabled {
+    background-color:#e7e7e7;
+    color:#fff;
+    border:1px solid #e7e7e7
+}
+
+.calendar{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #fff; 
+}
+.tab{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
+.tab-bar{
+    border: 1px solid #eee;
+    height: 30px;
+    line-height: 30px;
+}
+.tab-bar .active{
+    color: blue;
 }
