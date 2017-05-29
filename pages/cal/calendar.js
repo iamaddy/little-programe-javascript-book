@@ -46,7 +46,7 @@ var map = {
         jqnames: "小寒|大寒|立春|雨水|惊蛰|春分|清明|谷雨|立夏|小满|芒种|夏至|小暑|大暑|立秋|处暑|白露|秋分|寒露|霜降|立冬|小雪|大雪|冬至".parseToArray(),
 
         //中文数字
-        c1: "|一|二|三|四|五|六|七|八|九|十".parseToArray(),
+        c1: "一|二|三|四|五|六|七|八|九|十".parseToArray(),
         c2: "初|十|廿|卅|".parseToArray(),
 
         //中文星期
@@ -261,16 +261,8 @@ class Calendar {
         })
     }
     getLunarDayName(day){
-        return map.lunar.c2[Math.floor(day / 10)] + map.lunar.c1[day % 10]
-        /*if(day < 11){
-            return '初' + map.lunar.c1[day];
-        }else if(day < 20){
-            return '十' + map.lunar.c1[day - 10];
-        }else if(day < 30){
-            return '二' + map.lunar.c1[day - 20];
-        }else{
-            return '三' + map.lunar.c1[day - 30];
-        }*/
+        var a = Math.floor(day / 10);
+        return map.lunar.c2[day > 10 ? a : 0] + map.lunar.c1[(day - 1) % 10]
     }
     bindEvent(){
         this.pageCtx.changeCalendarTab = this.changeCalendarTab.bind(this);
