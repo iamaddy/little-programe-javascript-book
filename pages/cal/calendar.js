@@ -53,10 +53,10 @@ var map = {
         wk: "日一二三四五六",
 
         //天干
-        tg: "甲乙丙丁戊己庚辛壬癸",
+        tg: "癸甲乙丙丁戊己庚辛壬",
 
         //地支
-        dz: "子丑寅卯辰巳午未申酉戌亥",
+        dz: "亥子丑寅卯辰巳午未申酉戌",
 
         //生肖
         sx: "鼠牛虎兔龙蛇马羊猴鸡狗猪",
@@ -149,7 +149,7 @@ class Calendar {
     *@return: {String}
     */
     cyclical(n) {
-        return(map.lunar.tg.charAt(n%10) + map.lunar.dz.charAt(n%12));
+        return(map.lunar.tg.charAt(n % 10) + map.lunar.dz.charAt(n % 12));
     }
     initCalendar(){
         this.initNormalCalendar();
@@ -210,7 +210,7 @@ class Calendar {
         for(var i = MIN_LUNAR_YEAY; i < MAX_LUNAR_YEAY; i++){
             year.push({
                 id: i,
-                name: i + this.cyclical(i % 60)
+                name: i + this.cyclical(i - 3)
             });
         }
         var date = new Date();
@@ -253,12 +253,24 @@ class Calendar {
         for(var i = 0; i < num; i++){
             days.push({
                 i: i,
-                name: i
+                name: this.getLunarDayName(i + 1)
             })
         }
         this.setData({
             lunar_days : days
         })
+    }
+    getLunarDayName(day){
+        return map.lunar.c2[Math.floor(day / 10)] + map.lunar.c1[day % 10]
+        /*if(day < 11){
+            return '初' + map.lunar.c1[day];
+        }else if(day < 20){
+            return '十' + map.lunar.c1[day - 10];
+        }else if(day < 30){
+            return '二' + map.lunar.c1[day - 20];
+        }else{
+            return '三' + map.lunar.c1[day - 30];
+        }*/
     }
     bindEvent(){
         this.pageCtx.changeCalendarTab = this.changeCalendarTab.bind(this);
