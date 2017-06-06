@@ -1,7 +1,10 @@
 
 var util = require('../../utils/util.js');
 var TAG_DATA = require('../tag_data');
+var Date_diff = require('date_diff');
+
 var windowHeight = wx.getSystemInfoSync().windowHeight;
+
 Page({
     data: {
         commonDataList: [],
@@ -24,7 +27,8 @@ Page({
             that.data.commonDataList.push({
                 title: item.title,
                 dateStr: item.datetime.name,
-                icon: that.getIconbyType(item.event_type)
+                icon: that.getIconbyType(item.event_type),
+                lastDays: Date_diff.weeklyDiff(item.datetime.year + '-' + item.datetime.month + '-' + item.datetime.day)
             })
         });
         this.setData({
@@ -33,7 +37,7 @@ Page({
     },
     getIconbyType(type){
         for(var i = 0; i < TAG_DATA.length; i++){
-            if(TAG_DATA[i].tag_id === type){
+            if(TAG_DATA[i].tag_id - 1 === +type){
                 return TAG_DATA[i].icon;
             }
         }
