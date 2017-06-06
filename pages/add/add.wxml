@@ -2,15 +2,13 @@
 <view class="list">
     <view class="section gap">
         <label class="lable_txt">标题</label>
-        <input class="right_element title_input" type="text" placeholder="请输入标题"/>
+        <input class="right_element title_input" type="text" placeholder="请输入标题" value="{{title}}" bindinput="bindTitleInput"/>
     </view>
     <view class="section">
         <label class="lable_txt">日期</label>
-        <picker class="right_element" mode="date" value="{{date}}" bindchange="bindDateChange">
-            <view class="picker">
-              {{date}}
-            </view>
-        </picker>
+        <view class="right_element" bindtap="toggleCalendar">
+          {{date.name}}
+        </view>
     </view>
     <view bindtap="bindAddTagTap" class="section">
         <label class="lable_txt">分类</label>
@@ -19,7 +17,7 @@
     </view>
     <view class="section gap">
         <label class="lable_txt">设为封面</label>
-         <switch class="right_element" bindchange="switchChange"/>
+         <switch checked="{{is_cover}}" class="right_element" bindchange="switchChange"/>
     </view>
     <view class="section">
         <label class="lable_txt">重复</label>
@@ -35,7 +33,8 @@
         <view bindtap="bindSaveInfo" class="lbs-list__btn">保存</view>
     </view>
 </view>
-
-<template is="calendar" data="{{...calendar_data}}"></template>
+<view id="calendar-content" style="{{hideCalendar ? 'display:none;' : ''}}" class="calendar-content">
+    <template is="calendar" data="{{...calendar_data}}"></template>
+</view>
 
 

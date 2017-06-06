@@ -1,4 +1,3 @@
-
 var TAG_DATA = require('../tag_data');
 var app = getApp();
 var Calendar = require('../cal/calendar');
@@ -23,32 +22,40 @@ Page({
         replayTypeIndex: 0,
         selectTagIndex: 0,
         tag_data: TAG_DATA,
-        calendar_data: {
-
-        }
+        calendar_data: {},
+        hideCalendar: true,
+        title: '',
+        is_cover: false
     },
     onLoad: function(res) {
         var that = this;
-        app.PubSub.subscribe('/selecttag', function(event, index){
-            if(index !== undefined){
+        app.PubSub.subscribe('/selecttag', function(event, index) {
+            if (index !== undefined) {
                 that.setData({
                     selectTagIndex: index
                 });
             }
         });
-        new Calendar('1', this);
-    },
-    
-    onShow() {
-        this.setData({
-            date: this.getCurrentDay()
+        var calendar = new Calendar(this, function(date) {
+            that.setData({
+                date: date
+            })
         });
+        this.setData({
+            date: calendar.getCurrentSelectDate()
+        })
+    },
+
+    onShow() {
+        /*        this.setData({
+                    date: this.getCurrentDay()
+                });*/
         // this.initLunarDate();
     },
-    bindAddTagTap(){
+    bindAddTagTap() {
         wx.navigateTo({
             url: '../tag/tag?index=' + this.data.selectTagIndex
-        })
+        });
     },
     getCurrentDay() {
         var d = new Date();
@@ -64,22 +71,63 @@ Page({
 
         return year + '-' + month + '-' + day;
     },
-    bindreplayTypePickerChange(e){
+    bindreplayTypePickerChange(e) {
         this.setData({
-          replayTypeIndex: e.detail.value
+            replayTypeIndex: e.detail.value
         });
     },
-    bindSaveInfo(){
+    bindSaveInfo() {
+        if (!this.data.title) {
+            wx.showModal({
+                title: '标题不能为空',
+                showCancel: false
+            });
+            return;
+        }
 
+        var data = {
+            title: this.data.title,
+            datetime: this.data.date,
+            is_cover: this.data.is_cover,
+            replay_type: this.data.replayTypeIndex,
+            event_type: this.data.selectTagIndex
+        };
+        var list = wx.getStorageSync('_list_');
+        if (list) {
+            list = JSON.parse(list)
+        } else {
+            list = []
+        }
+        list.push(data);
+        wx.setStorage({
+            key: '_list_',
+            data: JSON.stringify(list),
+            success: function(res) {
+                console.log(res);
+                wx.showModal({
+                    title: '保存成功',
+                    showCancel: false,
+                    success: function(res) {
+                        if (res.confirm) {
+                            wx.navigateBack();
+                        }
+                    }
+                });
+            },
+            fail: function(res) {
+                wx.showModal({
+                    title: '保存失败',
+                    showCancel: false
+                });
+            }
+        });
+    },
+    bindTitleInput(e) {
+        this.data.title = e.detail.value;
+    },
+    toggleCalendar() {
+        this.setData({
+            hideCalendar: !this.data.hideCalendar
+        })
     }
 });
-
-/*
-    datetime:
-    title
-    nongli
-    eventType
-    typeName
-    is_first
-    replayType
-*/

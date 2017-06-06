@@ -7,7 +7,7 @@ Page({
         selectIndex: 0
     },
     onLoad: function(res) {
-        var index = res.index;
+        var index = res.index || 0;
         this.setData({
             selectIndex: +index
         });

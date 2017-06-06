@@ -1,124 +1,60 @@
 
 var util = require('../../utils/util.js');
-
+var TAG_DATA = require('../tag_data');
 var windowHeight = wx.getSystemInfoSync().windowHeight;
 Page({
     data: {
-        commonDataList: [{
-            user: {
-                nick_name: 'addyxu',
-                head_img_url: '../img/birthday.png'
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-                head_img_url: '../img/love.png'
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-                head_img_url: '../img/gift.png'
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-                head_img_url: '../img/birthday.png'
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-                head_img_url: '../img/love.png'
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-                head_img_url: '../img/birthday.png'
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-            },
-            hero_score:{
-                score: '99'
-            } 
-        },{
-            user: {
-                nick_name: 'addyxu',
-            },
-            hero_score:{
-                score: '99'
-            } 
-        }],
+        commonDataList: [],
         scrollHeight: windowHeight,
         minHeight: windowHeight - 310
     },
     onLoad: function(res) {
         
     },
+    onShow(){
+        this.data.commonDataList = [];
+        var list = wx.getStorageSync('_list_');
+        if(list){
+            list = JSON.parse(list)
+        }else{
+            list = []
+        }
+        var that = this;
+        list.forEach(function(item){
+            that.data.commonDataList.push({
+                title: item.title,
+                dateStr: item.datetime.name,
+                icon: that.getIconbyType(item.event_type)
+            })
+        });
+        this.setData({
+            commonDataList: this.data.commonDataList
+        });
+    },
+    getIconbyType(type){
+        for(var i = 0; i < TAG_DATA.length; i++){
+            if(TAG_DATA[i].tag_id === type){
+                return TAG_DATA[i].icon;
+            }
+        }
+    },
     bindAddDayTap: function () {
         wx.navigateTo({
             url: '../add/add'
         })
+    },
+    onShareAppMessage: function() {
+        var that = this;
+        return {
+            title: 'xxxxxxx',
+            desc: 'xxxxxwsww',
+            path: '/pages/day/day',
+            cancel() {},
+            complete() {},
+            success: function() {
+                
+            }
+        }
     }
 });
 

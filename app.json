@@ -1,9 +1,8 @@
 {
   "pages":[
-    "pages/add/add",
+  
     "pages/day/day",
-    
-    
+    "pages/add/add",
     "pages/tag/tag",
     "pages/index/index",
     "pages/detail/detail",
