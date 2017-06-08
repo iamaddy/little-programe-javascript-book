@@ -6,13 +6,13 @@
             <view class="lbs-list__map-text-box">
                 <view class="">
                     <view class="lbs-list__map-bang-name">距离</view>
-                    <view class="lbs-list__map-bang-desc">{{title|| '你的纪念日'}}</view>
+                    <view class="lbs-list__map-bang-desc">{{title}}</view>
                     
                     <view class="lbs-list__map-bang-rank">
-                    480
+                    {{lastDay}}
                     </view>
                     <view class="lbs-list__map-bang-rank-number">
-                    2016-02-11
+                    {{dateStr}}
                     </view>
                 </view>
             </view>

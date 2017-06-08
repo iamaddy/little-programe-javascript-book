@@ -76,6 +76,11 @@ Page({
             replayTypeIndex: e.detail.value
         });
     },
+    switchChange(e){
+        this.setData({
+           is_cover : e.detail.value
+        });
+    },
     bindSaveInfo() {
         if (!this.data.title) {
             wx.showModal({
@@ -97,6 +102,11 @@ Page({
             list = JSON.parse(list)
         } else {
             list = []
+        }
+        if(data.is_cover){
+            list.forEach(function(item){
+                item.is_cover = false;
+            });
         }
         list.push(data);
         wx.setStorage({
